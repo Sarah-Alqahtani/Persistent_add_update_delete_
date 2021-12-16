@@ -9,9 +9,16 @@ import UIKit
 
 
 class ViewController: UITableViewController, cancelbtn{
-    func savebtn(by controller: UIViewController,with text:String) {
+    func savebtn(by controller: UIViewController,with text:String,at indexpath:NSIndexPath?) {
        
-        ArrName.append(text)
+        if let saveEdit = indexpath
+        {
+            ArrName[saveEdit.row] = text
+        } else
+        {
+            ArrName.append(text)
+        }
+        
         tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
@@ -38,12 +45,20 @@ class ViewController: UITableViewController, cancelbtn{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text=ArrName[indexPath.row]
+                     let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+                         cell.textLabel?.text=ArrName[indexPath.row]
         return cell
     }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+         
+                self.ArrName.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+           }
+    }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         performSegue(withIdentifier: "editcell", sender: indexPath)
     }
     
@@ -56,15 +71,14 @@ class ViewController: UITableViewController, cancelbtn{
             controller.delegate = self
         }else if segue.identifier == "editcell"{
             
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.topViewController as! SecondTableViewController
+                        let navigationController = segue.destination as! UINavigationController
+                        let controller = navigationController.topViewController as! SecondTableViewController
 
-controller.delegate = self
-            let indexPath = sender as! NSIndexPath
-            let editing=ArrName[indexPath.row]
+            controller.delegate = self
+                        let indexPath = sender as! NSIndexPath
+                        let editing=ArrName[indexPath.row]
             controller.edittext=editing
-            
-            
+            controller.indexPath=indexPath
         } }
     
     }
