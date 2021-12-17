@@ -4,7 +4,7 @@
         <attribute name="coreDataitems" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class">
+    <entity name="Entity" representedClassName="Entity" syncable="YES">
         <attribute name="idcore" optional="YES" attributeType="String"/>
         <attribute name="textcore" optional="YES" attributeType="String"/>
     </entity>

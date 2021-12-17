@@ -22,7 +22,7 @@ class ViewController: UITableViewController, cancelbtn{
             
         } else
         {
-            let item = NSEntityDescription.insertNewObject(forEntityName: "Enity", into: getContext()) as! Entity
+            let item = NSEntityDescription.insertNewObject(forEntityName: "Entity",into: getContext()) as! Entity
                       item.textcore = text
                       ArrName.append(item)
                  
@@ -103,9 +103,8 @@ class ViewController: UITableViewController, cancelbtn{
             controller.indexPath=indexPath
         } }
     
-    }
 
-extension ViewController {
+
     func getContext() -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
