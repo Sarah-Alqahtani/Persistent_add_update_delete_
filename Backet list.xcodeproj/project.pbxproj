@@ -15,6 +15,9 @@
 		8410E658276B7FC4003FB52F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8410E656276B7FC4003FB52F /* LaunchScreen.storyboard */; };
 		8410E662276BC77C003FB52F /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410E661276BC77C003FB52F /* SecondTableViewController.swift */; };
 		8410E664276BC9F7003FB52F /* cancelbtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410E663276BC9F7003FB52F /* cancelbtn.swift */; };
+		8410E6FC276CB724003FB52F /* DataModelCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8410E6FA276CB724003FB52F /* DataModelCore.xcdatamodeld */; };
+		8410E6FE276CB7DF003FB52F /* BacketlistCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410E6FD276CB7DF003FB52F /* BacketlistCoreData.swift */; };
+		8410E700276CB8E4003FB52F /* BacetlistCoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410E6FF276CB8E4003FB52F /* BacetlistCoreDataObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		8410E659276B7FC4003FB52F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8410E661276BC77C003FB52F /* SecondTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewController.swift; sourceTree = "<group>"; };
 		8410E663276BC9F7003FB52F /* cancelbtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cancelbtn.swift; sourceTree = "<group>"; };
+		8410E6FB276CB724003FB52F /* DataModelCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModelCore.xcdatamodel; sourceTree = "<group>"; };
+		8410E6FD276CB7DF003FB52F /* BacketlistCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacketlistCoreData.swift; sourceTree = "<group>"; };
+		8410E6FF276CB8E4003FB52F /* BacetlistCoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacetlistCoreDataObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +50,8 @@
 		8410E63F276B7FC3003FB52F = {
 			isa = PBXGroup;
 			children = (
+				8410E6FF276CB8E4003FB52F /* BacetlistCoreDataObject.swift */,
+				8410E6FD276CB7DF003FB52F /* BacketlistCoreData.swift */,
 				8410E64A276B7FC3003FB52F /* Backet list */,
 				8410E649276B7FC3003FB52F /* Products */,
 			);
@@ -69,6 +77,7 @@
 				8410E659276B7FC4003FB52F /* Info.plist */,
 				8410E661276BC77C003FB52F /* SecondTableViewController.swift */,
 				8410E663276BC9F7003FB52F /* cancelbtn.swift */,
+				8410E6FA276CB724003FB52F /* DataModelCore.xcdatamodeld */,
 			);
 			path = "Backet list";
 			sourceTree = "<group>";
@@ -144,9 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8410E6FC276CB724003FB52F /* DataModelCore.xcdatamodeld in Sources */,
 				8410E650276B7FC3003FB52F /* ViewController.swift in Sources */,
 				8410E662276BC77C003FB52F /* SecondTableViewController.swift in Sources */,
+				8410E6FE276CB7DF003FB52F /* BacketlistCoreData.swift in Sources */,
 				8410E64C276B7FC3003FB52F /* AppDelegate.swift in Sources */,
+				8410E700276CB8E4003FB52F /* BacetlistCoreDataObject.swift in Sources */,
 				8410E64E276B7FC3003FB52F /* SceneDelegate.swift in Sources */,
 				8410E664276BC9F7003FB52F /* cancelbtn.swift in Sources */,
 			);
@@ -370,6 +382,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8410E6FA276CB724003FB52F /* DataModelCore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8410E6FB276CB724003FB52F /* DataModelCore.xcdatamodel */,
+			);
+			currentVersion = 8410E6FB276CB724003FB52F /* DataModelCore.xcdatamodel */;
+			path = DataModelCore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8410E640276B7FC3003FB52F /* Project object */;
 }

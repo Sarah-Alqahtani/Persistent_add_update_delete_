@@ -6,29 +6,44 @@
 //
 
 import UIKit
+import CoreData
 
 
 class ViewController: UITableViewController, cancelbtn{
+ 
     func savebtn(by controller: UIViewController,with text:String,at indexpath:NSIndexPath?) {
        
         if let saveEdit = indexpath
         {
-            ArrName[saveEdit.row] = text
+            let item = ArrName[saveEdit.row]
+            
+            item.textcore = text
+          //  ArrName[saveEdit.row] = text
+            
         } else
         {
-            ArrName.append(text)
-        }
+            let item = NSEntityDescription.insertNewObject(forEntityName: "Enity", into: getContext()) as! Entity
+                      item.textcore = text
+                      ArrName.append(item)
+                 
+                  }
+                  SaveText()
+                  
+                  tableView.reloadData()
+                  dismiss(animated: true, completion: nil)
+        
         
         tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
+    
     
     func cancelbtn(by controller: UIViewController) {
         dismiss(animated: true, completion: nil)
     }
 
     
-  var ArrName=["JOli","Reem","Adim","Mark","Norah","Amal","Maha","Sleem","Seed","Abduallah","Jaki","Hamad"]
+  var ArrName=[Entity]()
 
         
         override func viewDidLoad() {
@@ -46,17 +61,24 @@ class ViewController: UITableViewController, cancelbtn{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                      let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-                         cell.textLabel?.text=ArrName[indexPath.row]
+        cell.textLabel?.text=ArrName[indexPath.row].textcore
         return cell
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-         
-                self.ArrName.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
             
-           }
-    }
+            let text = ArrName[indexPath.row]
+            getContext().delete(text)
+            SaveText()
+            
+              ArrName.remove(at: indexPath.row)
+             tableView.reloadData()
+        }
+        
+    //override func tableView(_ tableView: UITableView, commit editingStyle: //UITableViewCell.EditingStyle,       ///forRowAt indexPath: IndexPath) {
+               // if editingStyle == .delete {
+               // self.ArrName.remove(at: indexPath.row)
+               // self.tableView.deleteRows(at: [indexPath], with: .automatic)//}
+ //   }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         performSegue(withIdentifier: "editcell", sender: indexPath)
@@ -77,11 +99,47 @@ class ViewController: UITableViewController, cancelbtn{
             controller.delegate = self
                         let indexPath = sender as! NSIndexPath
                         let editing=ArrName[indexPath.row]
-            controller.edittext=editing
+            controller.edittext=editing.textcore
             controller.indexPath=indexPath
         } }
     
     }
+
+extension ViewController {
+    func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    func SaveText() {
+          
+          let item = getContext()
+        
+          do {
+              try item.save()
+          } catch
+        {
+              print(error.localizedDescription)
+          }
+      }
+    func returnText() {
+        let item = getContext()
+        
+        let request = NSFetchRequest<Entity>.init(entityName: "Entity")
+        
+        do {
+            ArrName = try item.fetch(request)
+                  tableView.reloadData()
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+    }
+  
+    
+}
+
+
+
 
 
     
