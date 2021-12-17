@@ -33,13 +33,10 @@
                     <navigationItem key="navigationItem" id="5Hv-n6-Zel">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fwk-sO-wjH">
                             <connections>
-                                <segue destination="RZh-sh-Qeg" kind="presentation" identifier="addcell" id="Ohz-1d-aLO"/>
+                                <segue destination="RZh-sh-Qeg" kind="presentation" identifier="editcell" id="uJ5-Im-83L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="RZh-sh-Qeg" kind="presentation" identifier="editcell" id="x9H-QD-h1j"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTa-EU-iU0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -144,9 +141,6 @@
             <point key="canvasLocation" x="1542.0289855072465" y="115.84821428571428"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="x9H-QD-h1j"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

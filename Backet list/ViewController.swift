@@ -63,13 +63,13 @@ class ViewController: UITableViewController, cancelbtn{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addcell" {
+        if sender is UIBarButtonItem {
 
                         let navigationController = segue.destination as! UINavigationController
                         let controller = navigationController.topViewController as! SecondTableViewController
             
             controller.delegate = self
-        }else if segue.identifier == "editcell"{
+        }else if sender is IndexPath {
             
                         let navigationController = segue.destination as! UINavigationController
                         let controller = navigationController.topViewController as! SecondTableViewController
